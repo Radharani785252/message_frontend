@@ -48,6 +48,11 @@ function BulkMessage() {
       if (response.ok) {
         const data = await response.json();
         setResponse(data.message);
+        setBody("");
+        setResponse("");
+        setPhoneNumbers([])
+        setTo("")
+
         toast.success("Bulk SMS sent successfully!", { autoClose: 3000 });
       } else {
         const errorData = await response.json();
@@ -64,6 +69,7 @@ function BulkMessage() {
     }
   };
   const handleReset=()=>{
+    setTo("")
     setBody("")
     setResponse("")
     setPhoneNumbers([])
