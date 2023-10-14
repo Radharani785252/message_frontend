@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../App.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Index() {
   const [to, setTo] = useState("");
   const [body, setBody] = useState("");
@@ -21,6 +22,7 @@ function Index() {
 
       const data = await response.json();
       setResponse(data.message);
+      await toast.success("API request successful!", { autoClose: 3000 });
     } catch (error) {
       console.error(error);
       setResponse("Failed to send SMS");
@@ -29,6 +31,7 @@ function Index() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <h1>Send SMS</h1>
       <div>
         <label>To:</label>
